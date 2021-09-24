@@ -1,3 +1,3 @@
-### Health
+### WhoIs endpoint
 
-GET localhost:8080/healthz
+GET localhost:8080/whois?domain=blic.rs
