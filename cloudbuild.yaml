@@ -1,0 +1,17 @@
+steps:
+  - name: maven:3-jdk-11
+    entrypoint: mvn
+    args: ["package"]
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "gcr.io/hackathon-whois/thedespot-api:$COMMIT_SHA", "--build-arg=JAR_FILE=target/thedespot-api-0.0.1.jar", "."]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/hackathon-whois/thedespot-api:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - --image=gcr.io/hackathon-whois/thedespot-api:$COMMIT_SHA
+      - --region=$_DEPLOY_REGION
+      - --platform=$_PLATFORM

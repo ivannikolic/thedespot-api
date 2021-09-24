@@ -1,0 +1,12 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+http-client.private.env.json
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
