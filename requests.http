@@ -1,12 +1,12 @@
-### .rs
+### .rs active
 
 GET localhost:8080/whois?domain_name=maxi.rs
 
-### not registered
+### .rs not registered
 
 GET localhost:8080/whois?domain_name=biratenepostojecibroj.rs
 
-### expired
+### .rs expired
 
 GET localhost:8080/whois?domain_name=bravo.rs
 
@@ -16,6 +16,14 @@ GET localhost:8080/whois?domain_name=рнидс.срб
 
 ### .com
 
-GET localhost:8080/whois?domain_name=facebook.com
+GET localhost:8080/whois?domain_name=donesi.com
+
+### .com expired
+
+GET localhost:8080/whois?domain_name=00ur.com
+
+### .com not registered
+
+GET localhost:8080/whois?domain_name=biratenepostojecibroj.com
 
 

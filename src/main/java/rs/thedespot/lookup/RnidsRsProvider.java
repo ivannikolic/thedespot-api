@@ -17,8 +17,6 @@ public class RnidsRsProvider extends LookupProvider {
 
     @Override
     protected LookupResponse parseResponse(String response) {
-        System.out.println(response);
-
         if (response.startsWith("%ERROR:103: Domain is not registered")) {
             return new LookupResponse()
                     .setDomainStatus(DomainStatus.NotRegistered);
