@@ -1,3 +1,13 @@
-### WhoIs endpoint
+### WhoIs lookup .rs
 
-GET localhost:8080/whois?domain=blic.rs
+GET localhost:8080/whois?domain_name=maxi.rs
+
+### WhoIs lookup .срб
+
+GET localhost:8080/whois?domain_name=рнидс.срб
+
+### WhoIs lookup .com
+
+GET localhost:8080/whois?domain_name=facebook.com
+
+

@@ -1,8 +1,16 @@
 package rs.thedespot.service;
 
-import lombok.SneakyThrows;
-import org.apache.commons.net.whois.WhoisClient;
 import org.springframework.stereotype.Service;
+import rs.thedespot.lookup.IisSeProvider;
+import rs.thedespot.lookup.LookupProvider;
+import rs.thedespot.lookup.MarnetMkProvider;
+import rs.thedespot.lookup.NicComProvider;
+import rs.thedespot.lookup.NicUkProvider;
+import rs.thedespot.lookup.PublicInterestRegistryNetProvider;
+import rs.thedespot.lookup.RnidsRsProvider;
+import rs.thedespot.lookup.TcinetRuProvider;
+import rs.thedespot.lookup.VerisignGrsProvider;
+import rs.thedespot.model.LookupResponse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,42 +18,36 @@ import java.util.Map;
 @Service
 public class WhoIsService {
 
-    private static final Map<String, String> DOMAIN_LOOKUP_URL_MAPPING = new HashMap<>() {
+    private static final Map<String, LookupProvider> DOMAIN_LOOKUP_URL_MAPPING = new HashMap<>() {
         {
-            put(".rs", "whois.rnids.rs");
-            put(".срб", "whois.rnids.rs");
+            put(".rs", new RnidsRsProvider());
+            put(".срб", new RnidsRsProvider());
 
-            put(".ru", "whois.tcinet.ru");
-            put(".рф", "whois.tcinet.ru");
+            put(".ru", new TcinetRuProvider());
+            put(".рф", new TcinetRuProvider());
 
-            put(".mk", "whois.marnet.mk");
-            put(".мкд", "whois.marnet.mk");
+            put(".mk", new MarnetMkProvider());
+            put(".мкд", new MarnetMkProvider());
 
-            put(".org", "whois.publicinterestregistry.net");
-            put(".орг", "whois.publicinterestregistry.net");
+            put(".org", new PublicInterestRegistryNetProvider());
+            put(".орг", new PublicInterestRegistryNetProvider());
 
-            put(".com", "whois.verisign-grs.com");
+            put(".com", new VerisignGrsProvider());
 
-            put(".ком", "whois.nic.ком");
+            put(".ком", new NicComProvider());
 
-            put(".net", "whois.verisign-grs.com");
+            put(".net", new VerisignGrsProvider());
 
-            put(".uk", "whois.nic.uk");
+            put(".uk", new NicUkProvider());
 
-            put(".se", "whois.iis.se");
+            put(".se", new IisSeProvider());
         }
     };
 
-    @SneakyThrows
-    public String resolveDomain(String domain) {
-        WhoisClient whois = new WhoisClient();
-        try {
-            String lookUpUrl = DOMAIN_LOOKUP_URL_MAPPING.get(extractExtension(domain));
-            whois.connect(lookUpUrl);
-            return whois.query(domain);
-        } finally {
-            whois.disconnect();
-        }
+    public LookupResponse resolveDomain(String domainName) {
+        LookupProvider lookupProvider = DOMAIN_LOOKUP_URL_MAPPING.get(extractExtension(domainName));
+
+        return lookupProvider.lookup(domainName);
     }
 
     public void validateDomain(String domain) throws WhoIsException {
