@@ -1,5 +1,26 @@
 package rs.thedespot.model;
 
 public enum DomainStatus {
-    ACTIVE
+
+    NotRegistered,
+    Active,
+    Inactive,
+    Expired,
+    PendingDelete,
+    PendingUpdate,
+    PendingTransfer,
+    Dispute,
+
+    ClientUpdateProhibited,
+
+    RegistryLock,
+    ServerUpdateProhibited,
+    ServerHold,
+    ServerTransferProhibited,
+    ServerDeleteProhibited,
+    ServerTradeProhibited,
+    ServerRegistrantNameChangeProhibited,
+    ServerContactDataChangeProhibited,
+    ServerDnsChangeProhibited
+
 }

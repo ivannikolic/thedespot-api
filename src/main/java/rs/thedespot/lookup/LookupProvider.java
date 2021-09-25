@@ -26,7 +26,7 @@ public abstract class LookupProvider {
     //TODO make abstract when everything is implemented
     protected LookupResponse parseResponse(String response) {
         return new LookupResponse()
-                .setDomainStatus(DomainStatus.ACTIVE)
+                .setDomainStatus(DomainStatus.Active)
                 .setRegistrationDate(ZonedDateTime.now().minusMonths(2))
                 .setExpirationDate(ZonedDateTime.now().plusMonths(10));
     }

@@ -1,12 +1,20 @@
-### WhoIs lookup .rs
+### .rs
 
 GET localhost:8080/whois?domain_name=maxi.rs
 
-### WhoIs lookup .срб
+### not registered
+
+GET localhost:8080/whois?domain_name=biratenepostojecibroj.rs
+
+### expired
+
+GET localhost:8080/whois?domain_name=bravo.rs
+
+### .срб
 
 GET localhost:8080/whois?domain_name=рнидс.срб
 
-### WhoIs lookup .com
+### .com
 
 GET localhost:8080/whois?domain_name=facebook.com
 
