@@ -42,6 +42,10 @@ GET localhost:8080/whois?domain_name=test.com
 
 GET localhost:8080/whois?domain_name=helloworld.org
 
+### .org inactive
+
+GET localhost:8080/whois?domain_name=biratenepostojecibroj.org
+
 ### .net
 
 GET localhost:8080/whois?domain_name=test.net
