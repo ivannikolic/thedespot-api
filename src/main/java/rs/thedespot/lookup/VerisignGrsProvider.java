@@ -14,6 +14,8 @@ public class VerisignGrsProvider extends LookupProvider {
 
     @Override
     protected LookupResponse parseResponse(String response) {
+        System.out.println(response);
+
         if (response.startsWith("No match for ")) {
             return new LookupResponse()
                     .setDomainStatus(DomainStatus.NotRegistered);
@@ -23,7 +25,7 @@ public class VerisignGrsProvider extends LookupProvider {
         String registrationDateString = response.substring(response.indexOf("Creation Date: ") + 15, response.indexOf("\r\n   Registry Expiry Date: "));
         ZonedDateTime registrationDate = ZonedDateTime.parse(registrationDateString);
 
-        String expirationDateString = response.substring(response.indexOf("Registry Expiry Date: ") + 22, response.indexOf("\r\n   Registrar: "));
+        String expirationDateString = response.substring(response.indexOf("Registry Expiry Date: ") + 22, response.indexOf("Registry Expiry Date: ") + 42);
         ZonedDateTime expirationDate = ZonedDateTime.parse(expirationDateString);
 
         return new LookupResponse()

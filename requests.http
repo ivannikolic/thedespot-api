@@ -14,6 +14,10 @@ GET localhost:8080/whois?domain_name=bravo.rs
 
 GET localhost:8080/whois?domain_name=test.rs
 
+### .rs expired
+
+GET localhost:8080/whois?domain_name=bravo.rs
+
 ### .срб
 
 GET localhost:8080/whois?domain_name=рнидс.срб
@@ -29,6 +33,10 @@ GET localhost:8080/whois?domain_name=00ur.com
 ### .com not registered
 
 GET localhost:8080/whois?domain_name=biratenepostojecibroj.com
+
+### .com
+
+GET localhost:8080/whois?domain_name=test.com
 
 ### .org
 

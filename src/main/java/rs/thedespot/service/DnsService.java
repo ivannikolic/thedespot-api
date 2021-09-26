@@ -4,12 +4,10 @@ import org.springframework.stereotype.Service;
 import org.xbill.DNS.Lookup;
 import org.xbill.DNS.NSRecord;
 import org.xbill.DNS.Record;
-import org.xbill.DNS.TextParseException;
 import org.xbill.DNS.Type;
 import rs.thedespot.model.DnsInfo;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
