@@ -1,19 +1,42 @@
 package rs.thedespot.service;
 
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
+import org.xbill.DNS.Lookup;
+import org.xbill.DNS.NSRecord;
+import org.xbill.DNS.Record;
+import org.xbill.DNS.TextParseException;
+import org.xbill.DNS.Type;
+import rs.thedespot.model.DnsInfo;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DnsService {
 
-    public String resolveAddress(String domainName) {
+    public DnsInfo resolveAddress(String domainName) {
+        var nameServers = List.<String>of();
+        try {
+            Record[] records = new Lookup(domainName, Type.NS).run();
+            nameServers = Stream.of(records).map(r -> (NSRecord) r)
+                    .map(NSRecord::getTarget)
+                    .map(r -> r.toString(true))
+                    .collect(Collectors.toList());
+        } catch (TextParseException e) {
+            e.printStackTrace();
+        }
+        String hostAddress = null;
         try {
             InetAddress address = InetAddress.getByName(domainName);
-            return address.getHostAddress();
+            hostAddress = address.getHostAddress();
         } catch (UnknownHostException e) {
-            return null;
+            e.printStackTrace();
         }
+
+        return new DnsInfo().setHostAddress(hostAddress).setNameServers(nameServers);
     }
 }

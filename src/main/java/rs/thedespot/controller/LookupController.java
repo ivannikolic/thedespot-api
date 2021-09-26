@@ -28,7 +28,7 @@ public class LookupController {
         }
 
         LookupResponse response = whoIsService.resolveDomain(domainName);
-        response.setIpAddress(dnsService.resolveAddress(domainName));
+        response.setDnsInfo(dnsService.resolveAddress(domainName));
 
         return ResponseEntity.ok(response);
     }

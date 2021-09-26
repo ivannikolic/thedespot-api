@@ -20,7 +20,7 @@ public class LookupResponse {
 
     private ZonedDateTime expirationDate;
 
-    private String ipAddress;
+    private DnsInfo dnsInfo;
 
     private String whoIsRawData;
 
