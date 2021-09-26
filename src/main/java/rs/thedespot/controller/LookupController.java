@@ -7,18 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rs.thedespot.model.LookupResponse;
+import rs.thedespot.service.DnsService;
 import rs.thedespot.service.WhoIsException;
 import rs.thedespot.service.WhoIsService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/whois")
-public class WhoIsController {
+public class LookupController {
 
     private final WhoIsService whoIsService;
+    private final DnsService dnsService;
 
     @GetMapping
-    public ResponseEntity<?> whois(@RequestParam(name = "domain_name") String domainName) {
+    @RequestMapping({"/whois", "/lookup"})
+    public ResponseEntity<?> lookup(@RequestParam(name = "domain_name") String domainName) {
         try {
             whoIsService.validateDomain(domainName);
         } catch (WhoIsException e) {
@@ -26,6 +28,7 @@ public class WhoIsController {
         }
 
         LookupResponse response = whoIsService.resolveDomain(domainName);
+        response.setIpAddress(dnsService.resolveAddress(domainName));
 
         return ResponseEntity.ok(response);
     }

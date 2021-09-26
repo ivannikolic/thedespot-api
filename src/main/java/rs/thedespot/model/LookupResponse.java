@@ -20,4 +20,6 @@ public class LookupResponse {
 
     private ZonedDateTime expirationDate;
 
+    private String ipAddress;
+
 }

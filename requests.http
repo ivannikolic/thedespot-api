@@ -30,6 +30,14 @@ GET localhost:8080/whois?domain_name=00ur.com
 
 GET localhost:8080/whois?domain_name=biratenepostojecibroj.com
 
+### .org
+
+GET localhost:8080/whois?domain_name=helloworld.org
+
+### .net
+
+GET localhost:8080/whois?domain_name=test.net
+
 ### send email
 
 POST localhost:8080/email?email_to=ivann990@gmail.com&domain_name=facebook.com
