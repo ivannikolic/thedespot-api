@@ -15,8 +15,11 @@ public abstract class LookupProvider {
         try {
             String lookUpUrl = getLookupURL();
             whois.connect(lookUpUrl);
-            LookupResponse response = parseResponse(whois.query(domainName));
+            String rawData = whois.query(domainName);
+            LookupResponse response = parseResponse(rawData);
             response.setDomainName(domainName);
+            response.setWhoIsProvider(lookUpUrl);
+            response.setWhoIsRawData(rawData);
             return response;
         } finally {
             whois.disconnect();

@@ -22,4 +22,8 @@ public class LookupResponse {
 
     private String ipAddress;
 
+    private String whoIsRawData;
+
+    private String whoIsProvider;
+
 }
