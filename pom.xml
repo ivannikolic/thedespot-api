@@ -20,6 +20,7 @@
         <lombok.version>1.18.16</lombok.version>
         <spring-cloud-gcp-dependencies.version>1.2.6.RELEASE</spring-cloud-gcp-dependencies.version>
         <commons-net.version>3.8.0</commons-net.version>
+        <mailjet-java.version>5.1.0</mailjet-java.version>
     </properties>
 
 
@@ -38,6 +39,11 @@
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mailjet</groupId>
+            <artifactId>mailjet-client</artifactId>
+            <version>${mailjet-java.version}</version>
         </dependency>
     </dependencies>
 

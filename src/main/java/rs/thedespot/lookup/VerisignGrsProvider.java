@@ -14,8 +14,6 @@ public class VerisignGrsProvider extends LookupProvider {
 
     @Override
     protected LookupResponse parseResponse(String response) {
-        System.out.println(response);
-
         if (response.startsWith("No match for ")) {
             return new LookupResponse()
                     .setDomainStatus(DomainStatus.NotRegistered);
