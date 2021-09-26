@@ -1,6 +1,5 @@
 package rs.thedespot.service;
 
-import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.xbill.DNS.Lookup;
 import org.xbill.DNS.NSRecord;
