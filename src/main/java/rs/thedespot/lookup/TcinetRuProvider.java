@@ -40,7 +40,7 @@ public class TcinetRuProvider extends LookupProvider {
         return new LookupResponse()
                 .setDomainStatus(DomainStatus.Active)
                 .setRegistrationDate(createdDate)
-                .setExpirationDate(freeDate.atStartOfDay(ZoneId.systemDefault()))
+                .setExpirationDate(freeDate.atStartOfDay(ZoneId.of("CET")))
                 ;
     }
 
