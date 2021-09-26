@@ -25,14 +25,14 @@ public class DnsService {
                     .map(NSRecord::getTarget)
                     .map(r -> r.toString(true))
                     .collect(Collectors.toList());
-        } catch (TextParseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         String hostAddress = null;
         try {
             InetAddress address = InetAddress.getByName(domainName);
             hostAddress = address.getHostAddress();
-        } catch (UnknownHostException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
