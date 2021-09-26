@@ -30,7 +30,7 @@ public abstract class LookupProvider {
     protected LookupResponse parseResponse(String response) {
         return new LookupResponse()
                 .setDomainStatus(DomainStatus.Active)
-                .setRegistrationDate(ZonedDateTime.now().minusMonths(2))
+                .setRegistrationDate(ZonedDateTime.now().minusMonths(14))
                 .setExpirationDate(ZonedDateTime.now().plusMonths(10));
     }
 

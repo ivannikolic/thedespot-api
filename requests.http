@@ -78,6 +78,18 @@ GET localhost:8080/whois?domain_name=makfax.mk
 
 GET localhost:8080/whois?domain_name=biratenepostojecibroj.mk
 
+### .uk
+
+GET localhost:8080/whois?domain_name=google.uk
+
+### .uk inactive
+
+GET localhost:8080/whois?domain_name=biratenepostojecibroj.uk
+
+### .ком
+
+GET localhost:8080/whois?domain_name=biratenepostojecibroj.uk
+
 ### send email
 
 POST localhost:8080/email?email_to=ivann990@gmail.com&domain_name=facebook.com
