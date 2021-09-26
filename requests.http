@@ -10,6 +10,10 @@ GET localhost:8080/whois?domain_name=biratenepostojecibroj.rs
 
 GET localhost:8080/whois?domain_name=bravo.rs
 
+### .rs reserved
+
+GET localhost:8080/whois?domain_name=test.rs
+
 ### .срб
 
 GET localhost:8080/whois?domain_name=рнидс.срб

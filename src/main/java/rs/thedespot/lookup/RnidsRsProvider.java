@@ -21,6 +21,10 @@ public class RnidsRsProvider extends LookupProvider {
             return new LookupResponse()
                     .setDomainStatus(DomainStatus.NotRegistered);
         }
+        if (response.contains("This domain is reserved")) {
+            return new LookupResponse()
+                    .setDomainStatus(DomainStatus.Reserved);
+        }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 

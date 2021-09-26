@@ -3,6 +3,8 @@ package rs.thedespot.model;
 public enum DomainStatus {
 
     NotRegistered,
+    Reserved,
+
     Active,
     Inactive,
     Expired,
